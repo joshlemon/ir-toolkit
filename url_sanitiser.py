@@ -6,8 +6,8 @@ import sys
 
 __description__ = "Sanitises URLs so they don't resolve to hrefs when pasted into web apps"
 __author__ = 'Josh Lemon'
-__version__ = '0.0.1'
-__date__ = '2017/08/15'
+__version__ = '0.0.2'
+__date__ = '2017/08/23'
 
 
 """
@@ -17,6 +17,7 @@ Use at your own risk
 
 History:
   2017/08/15: 0.0.1 first release
+  2017/08/23: 0.0.2 added the ability to parse the pipe "|" character from the input
 
 Todo:
   add ability to unsanitise a URL with a switch
@@ -24,10 +25,10 @@ Todo:
 
 
 def sanitiseurl(urls):
-    print(urls.replace('.', '[.]').replace('http', 'hxxp').replace(',', '\n').replace(' ', '\n'))
+    print(urls.replace('.', '[.]').replace('http', 'hxxp').replace(',', '\n').replace('|', '\n').replace(' ', '\n'))
 
 def unsanitiseurl(urls):
-    print(urls.replace('[.]', '.').replace('hxxp', 'http').replace(',', '\n').replace(' ', '\n'))
+    print(urls.replace('[.]', '.').replace('hxxp', 'http').replace(',', '\n').replace('|', '\n').replace(' ', '\n'))
 
 
 def main():
