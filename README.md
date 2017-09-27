@@ -1,6 +1,6 @@
 # ir-toolkit
 
-ir-toolkit is a collection of tools and scripts that are indended to be useful to Incident Responders.
+ir-toolkit is a collection of tools and scripts that are indended to be useful to Incident Responders. All scripts have a '-h' help funtion to help you use the scripts correctly.
 
 
 ## url_sanitiser

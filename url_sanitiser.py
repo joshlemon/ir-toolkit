@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-import sys
+import sys, argparse
 
 
 __description__ = "Sanitises URLs so they don't resolve to hrefs when pasted into web apps"
 __author__ = 'Josh Lemon'
-__version__ = '0.0.2'
-__date__ = '2017/08/23'
+__version__ = '0.1.0'
+__date__ = '2017/09/28'
 
 
 """
@@ -18,9 +18,10 @@ Use at your own risk
 History:
   2017/08/15: 0.0.1 first release
   2017/08/23: 0.0.2 added the ability to parse the pipe "|" character from the input
+  2017/09/28: 0.1.0 add ability to unsanitise a URL with a switch
 
 Todo:
-  add ability to unsanitise a URL with a switch
+  clean up STDIN so a switch can be used with STDIN
 """
 
 
@@ -32,18 +33,36 @@ def unsanitiseurl(urls):
 
 
 def main():
-    try:
-        if len(sys.argv) > 1:
-            for i in sys.argv:
-                if sys.argv.index(i) != 0:
-                    sanitiseurl(i)
-
-        elif sys.stdin:
-            sanitiseurl(sys.stdin.read())
-    except:
-        print("Umm....this is embarrassing, I've run into an error")
-        exit(-1)
-
+    parser=argparse.ArgumentParser()
+    parser.add_argument('-s','--sanitiseURL',action='store',required=False, default=sys.stdin, help='Sanitise URLs from the data provided')
+    parser.add_argument('-u','--unsanitiseURL',action='store',required=False, help='Unsanitise URLs from the data provided')
+    parser.add_argument('--version', action='version', version='%(prog)s ' + __version__)
+    args=parser.parse_args()
+    
+    if args.unsanitiseURL is None:
+        try:
+            if len(sys.argv) > 1:
+                for i in sys.argv:
+                    if sys.argv.index(i) >1:
+                        sanitiseurl(i)
+    
+            elif sys.stdin:
+                sanitiseurl(sys.stdin.read())
+        except:
+            parser.print_help()
+            exit(-1)
+    else:
+        try:
+            if len(sys.argv) > 1:
+                for i in sys.argv:
+                    if sys.argv.index(i) > 1:
+                        unsanitiseurl(i)
+    
+            elif sys.stdin:
+                unsanitiseurl(sys.stdin.read())
+        except:
+            parser.print_help()
+            exit(-1)
 
 if __name__ == '__main__':
     main()
