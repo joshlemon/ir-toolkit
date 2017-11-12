@@ -8,3 +8,6 @@ This is a python script for sanitising malicious URLs so they are safe to use in
 
 ## ir_extractor
 This is a python script for extracting common strings from STDIN used by Incident Responders for processing text.
+
+## time_helper
+A python script for printing time in UTC, Epoch or current timezone. This script will also calculate time by shifting hours or minutes with the '-s' switch.
