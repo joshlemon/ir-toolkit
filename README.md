@@ -3,6 +3,9 @@
 ir-toolkit is a collection of tools and scripts that are indended to be useful to Incident Responders. All scripts have a '-h' help funtion to help you use the scripts correctly.
 
 
+## malware_protector
+This is a python script for protecting single malware samples in ZIP files using the default password of "infected" or a custom password. You can also use this script to quickly unprotect malware samples.
+
 ## url_sanitiser
 This is a python script for sanitising malicious URLs so they are safe to use in web apps and don't render in web pages.
 
